@@ -27,7 +27,7 @@ OPENAI_API_KEY = config["OPENAI_API_KEY"]
 
 llm = ChatOpenAI(openai_api_key=OPENAI_API_KEY, model_name="gpt-3.5-turbo")
 
-
+st.set_page_config(layout="wide", page_title="StudySage", page_icon="📚")
 st.title("StudySage - Your AI Study Buddy")
 
 def get_pdf_text(pdf):
@@ -103,6 +103,9 @@ if user_input:
     handle_user_input(user_input)
         
     # st.session_state.conversation
+st.sidebar.divider()
+st.sidebar.markdown("""
+                    Made with ❤️ by [Vishwas Gowda](https://www.linkedin.com/in/vishwasgowda217/)""")
 
 
         
