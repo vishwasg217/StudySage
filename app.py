@@ -20,7 +20,7 @@ from langchain.schema import (
 )
 
 config = dotenv_values(".env")
-OPENAI_API_KEY = config["OPENAI_API_KEY"]
+OPENAI_API_KEY = config["OPEN_AI_API"]
 
 # llm = OpenAI(openai_api_key=OPENAI_API_KEY,temperature=0.9, model_name="gpt-3.5-turbo")
 # embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
@@ -48,6 +48,7 @@ def get_chunks(text):
     length_function=len
     )
     chunks = text_splitter.split_text(text)
+    
     return chunks
 
 def vector_store(chunks):

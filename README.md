@@ -1,7 +1,7 @@
-# StudySage - AI Study Assistant Chatbot
+# 📚 StudySage - AI Study Assistant Chatbot
 
 ## Overview
-StudySage is a web application that leverages the OpenAI API and the Langchain framework to provide an AI study assistant chatbot. The chatbot allows users to upload their study notes and engage in interactive conversations with the AI assistant, receiving personalized responses based on the information contained in the uploaded documents. The application utilizes Streamlit for the frontend interface and FAISS as a vector store for efficient document retrieval.
+StudySage is a web application that leverages the OpenAI API and the Langchain framework to provide an AI study assistant chatbot. The chatbot allows users to upload their study notes and engage in interactive conversations with the AI assistant, receiving personalized responses based on the information contained in the uploaded documents. The application utilizes Streamlit for the frontend interface and ChromaDB for efficient document retrieval.
 
 ## Architecture
 The architecture of StudySage can be divided into the following components:
@@ -12,7 +12,7 @@ The architecture of StudySage can be divided into the following components:
 
 3. **Streamlit Frontend:** StudySage uses Streamlit, a Python library for building interactive web applications, as the frontend interface. Streamlit enables users to easily interact with the chatbot, upload study notes, and receive responses in real-time.
 
-4. **FAISS Vector Store:** To optimize document retrieval, StudySage employs FAISS as a vector store. FAISS allows efficient storage and retrieval of document embeddings, enabling fast and accurate retrieval of relevant information during chatbot conversations.
+4. **ChromaDB Vector Store:** To optimize document retrieval, StudySage employs ChromaDB as a document store. ChromaDB allows efficient storage and retrieval of document embeddings, enabling fast and accurate retrieval of relevant information during chatbot conversations.
 
 ## Steps to Implement
 To set up and run StudySage locally, follow these steps:
@@ -23,7 +23,12 @@ To set up and run StudySage locally, follow these steps:
 
 3. Install the required dependencies: `pip install -r requirements.txt`
 
-4. Run the application: `streamlit run app.py`
+4. Set up your OpenAI API key: Create a `.env` file in the project directory and add the following line:
+   ```
+   OPEN_AI_API = "YOUR_API_KEY"
+   ```
+
+5. Run the application: `streamlit run app.py`
 
 ## Example Image
 ![StudySage Example](assets/example.png)
