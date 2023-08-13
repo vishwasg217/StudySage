@@ -1,7 +1,9 @@
 # 📚 StudySage - AI Study Assistant Chatbot
 
 ## Overview
-StudySage is a web application that leverages the OpenAI API and the Langchain framework to provide an AI study assistant chatbot. The chatbot allows users to upload their study notes and engage in interactive conversations with the AI assistant, receiving personalized responses based on the information contained in the uploaded documents. The application utilizes Streamlit for the frontend interface and ChromaDB for efficient document retrieval.
+StudySage is a web application that leverages the OpenAI API and the Langchain framework to provide an AI study assistant chatbot. The chatbot allows users to upload multiple study notes and engage in interactive conversations with the AI assistant, receiving personalized responses based on the information contained in the uploaded documents. The application utilizes Streamlit for the frontend interface and ChromaDB for efficient document retrieval.
+
+![StudySage Example](assets/main_example.png)
 
 ## Architecture
 The architecture of StudySage can be divided into the following components:
@@ -28,11 +30,6 @@ To set up and run StudySage locally, follow these steps:
    OPEN_AI_API = "YOUR_API_KEY"
    ```
 
-5. Run the application: `streamlit run app.py`
-
-## Example Image
-![StudySage Example](assets/main_example.png)
-
-The above image showcases the StudySage web application, where users can upload their study notes and engage in a chatbot conversation to receive personalized responses based on the content of the uploaded documents.
+5. Run the application: `streamlit run main_app.py`
 
 Feel free to reach out if you have any questions or need further assistance!
