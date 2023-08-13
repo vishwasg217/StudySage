@@ -26,6 +26,8 @@ OPENAI_API_KEY = config["OPENAI_API_KEY"]
 # embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
 
 llm = ChatOpenAI(openai_api_key=OPENAI_API_KEY, model_name="gpt-3.5-turbo")
+memory = ConversationBufferMemory(memory_key='chat_history', return_messages=True)
+
 
 st.set_page_config(layout="wide", page_title="StudySage", page_icon="📚")
 st.title("StudySage - Your AI Study Buddy")
@@ -56,8 +58,7 @@ def vector_store(chunks):
         pickle.dump(knowledge_base, f)
     return knowledge_base
 
-def get_converation_chain(vector_store):
-    memory = ConversationBufferMemory(memory_key='chat_history', return_messages=True)
+def get_conversation_chain(vector_store):
     conversation_chain = ConversationalRetrievalChain.from_llm(llm=llm, retriever=vector_store.as_retriever(), memory=memory)
     return conversation_chain
 
@@ -96,7 +97,7 @@ if st.sidebar.button("Process PDF"):
 
         # create embeddings
         knowledge_base = vector_store(chunks)
-        st.session_state.conversation = get_converation_chain(knowledge_base)
+        st.session_state.conversation = get_conversation_chain(knowledge_base)
 
 user_input = st.sidebar.text_input("Ask questions")
 if user_input:
