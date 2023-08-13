@@ -31,7 +31,7 @@ To set up and run StudySage locally, follow these steps:
 5. Run the application: `streamlit run app.py`
 
 ## Example Image
-![StudySage Example](assets/example.png)
+![StudySage Example](assets/main_example.png)
 
 The above image showcases the StudySage web application, where users can upload their study notes and engage in a chatbot conversation to receive personalized responses based on the content of the uploaded documents.
 
