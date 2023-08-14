@@ -1,19 +1,16 @@
-from langchain.text_splitter import CharacterTextSplitter
+from langchain.schema import SystemMessage 
+from langchain.memory import ConversationBufferWindowMemory
 
-import streamlit as st
-from PyPDF2 import PdfReader
+system_message = SystemMessage(content="Hello world!")
 
+memory = ConversationBufferWindowMemory(
+    k=5,
+    extra_messages=[system_message]  
+)
 
-pdf = st.file_uploader("pdf", type=['pdf'])
+print(memory.construct_prompt(...))
+# Should see "Hello world!" after history
 
-if st.button("pdf"):
-    file = PdfReader(pdf)
-    splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
-    
-    text = ''
-
-    for page in file.pages:
-        text += page.extract_text()
-
-    text = splitter.split_text(text)
-    st.write(text)
+chain = MyChain(memory=memory) 
+response = chain.predict(...) 
+# SystemMessage should be in prompt here
