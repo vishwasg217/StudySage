@@ -19,9 +19,11 @@ def process_pdf(pdfs):
     for pdf in pdfs:
         file = PdfReader(pdf)
         for page in file.pages:
-            text += page.extract_text()
+            text += str(page.extract_text())
 
-        splitted_text = splitter.split_text(text)
+    splitted_text = splitter.split_text(text)
+
+    print(splitted_text)
 
     return splitted_text
 

@@ -46,7 +46,7 @@ if __name__ == "__main__":
             st.session_state.process_pdf = True
             with st.spinner("Processing PDF..."):
                 splitted_text = process_pdf(pdfs)
-            db = database(splitted_text)
+                db = database(splitted_text)
             # system_message =  """You are a study assistant chatbot where a student can upload their notes and you answer question based on it.
             #               explain the answer in simple manner and neatly formatted way. Provide examples wherever needed. Don't assume the student to have too much prior knowledge.
             #               You must stick to the information provided in the notes/document. 
