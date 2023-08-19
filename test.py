@@ -1,16 +1,15 @@
-from langchain.schema import SystemMessage 
-from langchain.memory import ConversationBufferWindowMemory
+import streamlit as st
+from langchain.llms import OpenAI
 
-system_message = SystemMessage(content="Hello world!")
+questions = st.text_area("Enter Text")
 
-memory = ConversationBufferWindowMemory(
-    k=5,
-    extra_messages=[system_message]  
-)
+if questions != "":
 
-print(memory.construct_prompt(...))
-# Should see "Hello world!" after history
+    OPEN_AI_API = "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"
 
-chain = MyChain(memory=memory) 
-response = chain.predict(...) 
-# SystemMessage should be in prompt here
+    model = OpenAI(openai_api_key=OPEN_AI_API, model_name="gpt-3.5-turbo")
+
+    answers = model(f"format the questions into a list {questions}")
+
+    st.write(questions)
+    st.write(answers)
