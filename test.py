@@ -1,15 +1,22 @@
-import streamlit as st
+from langchain.output_parsers import CommaSeparatedListOutputParser
+from langchain.prompts import PromptTemplate, ChatPromptTemplate, HumanMessagePromptTemplate
 from langchain.llms import OpenAI
+from langchain.chat_models import ChatOpenAI
 
-questions = st.text_area("Enter Text")
+output_parser = CommaSeparatedListOutputParser()
 
-if questions != "":
+OPEN_AI_API = "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"
 
-    OPEN_AI_API = "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"
+format_instructions = output_parser.get_format_instructions()
+prompt = PromptTemplate(
+    template="List five {subject}.\n{format_instructions}",
+    input_variables=["subject"],
+    partial_variables={"format_instructions": format_instructions}
+)
 
-    model = OpenAI(openai_api_key=OPEN_AI_API, model_name="gpt-3.5-turbo")
+model = OpenAI(temperature=0, openai_api_key=OPEN_AI_API)
 
-    answers = model(f"format the questions into a list {questions}")
+_input = prompt.format(subject="ice cream flavors")
+output = model(_input)
 
-    st.write(questions)
-    st.write(answers)
+print(output_parser.parse(output))

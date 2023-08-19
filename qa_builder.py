@@ -38,7 +38,7 @@ Questions: {questions}
 # creating a Pydantic model to parse the output
 class GenerateAnswers(BaseModel):
     question: str = Field(description="Questions")
-    answer: str = Field(description="Answers")
+    answer: List[str] = Field(description="Answers")
 
     # @validator('summary', allow_reuse=True)
     # def has_three_or_more_lines(cls, list_of_lines):
