@@ -9,10 +9,12 @@ from langchain.chains import LLMChain, TransformChain, SequentialChain
 
 from pydantic import BaseModel, Field, validator
 from typing import List
-
+from dotenv import dotenv_values
 from utils import process_pdf
 
-OPEN_AI_API = "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"
+env = dotenv_values(".env")
+OPEN_AI_API = env['OPEN_AI_API']
+
 
 def database(splitted_text):
     embeddings = OpenAIEmbeddings(openai_api_key=OPEN_AI_API)
@@ -23,7 +25,6 @@ pdf = open("notes.pdf", "rb")
 
 splitted_text = process_pdf([pdf])
 db = database(splitted_text)
-
 
 
 output_parser = CommaSeparatedListOutputParser()
